@@ -1,0 +1,87 @@
+ACTOR ObjectiveMarker1 : MapMarker 1001
+{
+	+NOTDMATCH
+	States
+	{
+	Spawn:
+		MARK A 0
+		MARK A 0 Thing_ChangeTID(0,1)
+	Idle:
+		MARK AB 8
+		Loop
+	}
+}
+
+ACTOR ObjectiveMarker2 : MapMarker 1002
+{
+	+NOTDMATCH
+	States
+	{
+	Spawn:
+		MARK A 0
+		MARK A 0 Thing_ChangeTID(0,2)
+	Idle:
+		MARK AB 8
+		Loop
+	}
+}
+
+ACTOR ObjectiveMarker3 : MapMarker 1003
+{
+	+NOTDMATCH
+	States
+	{
+	Spawn:
+		MARK A 0
+		MARK A 0 Thing_ChangeTID(0,3)
+	Idle:
+		MARK AB 8
+		Loop
+	}
+}
+
+ACTOR ObjectiveMarker4 : MapMarker 1004
+{
+	+NOTDMATCH
+	States
+	{
+	Spawn:
+		MARK A 0
+		MARK A 0 Thing_ChangeTID(0,4)
+	Idle:
+		MARK AB 8
+		Loop
+	}
+}
+
+ACTOR ObjectiveMarker5 : MapMarker 1005
+{
+	+NOTDMATCH
+	States
+	{
+	Spawn:
+		MARK A 0
+		MARK A 0 Thing_ChangeTID(0,5)
+	Idle:
+		MARK AB 8
+		Loop
+	}
+}
+
+ACTOR ObjectiveMarker6 : MapMarker 1006
+{
+	+NOTDMATCH
+	States
+	{
+	Spawn:
+		MARK A 0
+		MARK A 0 Thing_ChangeTID(0,6)
+	Idle:
+		MARK AB 8
+		Loop
+	}
+}
+
+ACTOR MaceSpawner2 : MaceSpawner 3001 {}
+ACTOR MaceSpawner3 : MaceSpawner 3002 {}
+ACTOR MaceSpawner4 : MaceSpawner 3003 {}

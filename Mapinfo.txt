@@ -1,0 +1,52 @@
+clearepisodes
+episode e1m1
+{
+	name = "$MNU_COTD"
+	key = "c"
+}
+
+episode e2m1
+{
+	name = "$MNU_HELLSMAW"
+	key = "h"
+}
+
+map E1M1 lookup "MNU_COTD"
+{
+	next = "EndGame1"
+	sky1 = "SKY1"
+	translator = "maplines"
+	cluster = 1
+	infiniteflightpowerup
+	ironlichspecial
+	specialaction_lowerfloortohighest
+	music = "MUS_E1M1"
+}
+
+map E2M1 lookup "MNU_HELLSMAW"
+{
+	next = "EndGameW"
+	sky1 = "SKY2"
+	translator = "maplines"
+	cluster = 2
+	infiniteflightpowerup
+	minotaurspecial
+	specialaction_lowerfloortohighest
+	music = "MUS_E2M1"
+}
+
+cluster 1
+{
+	hub
+	flat = "FLOOR25"
+	music = "MUS_CPTD"
+	exittext = lookup, "HE1TEXT"
+}
+
+cluster 2
+{
+	hub
+	flat = "FLATHUH1"
+	music = "MUS_CPTD"
+	exittext = lookup, "HE2TEXT"
+}

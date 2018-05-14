@@ -1,0 +1,8 @@
+[en default]
+
+HEREUNAB_SWITCH6 = "only five more to go.";
+HEREUNAB_SWITCH5 = "only four more to go.";
+HEREUNAB_SWITCH4 = "only three more to go.";
+HEREUNAB_SWITCH3 = "only two more to go.";
+HEREUNAB_SWITCH2 = "only one more to go.";
+HEREUNAB_SWITCH1 = "the final area is unlocked.";

@@ -1,0 +1,116 @@
+#library "mapacs"
+#include "zcommon.acs"
+
+int SwitchesRemain;
+bool FinalDoorOpen = FALSE;
+
+bool GotYellow = FALSE;
+bool GotGreen = FALSE;
+bool GotBlue = FALSE;
+bool GotWings = FALSE;
+
+int CurrentArea[18][3] =
+{
+{"HHUSTR_E1M1", "MUS_E1M1", 664},
+{"HHUSTR_E1M2", "MUS_E1M2", 156},
+{"HHUSTR_E1M3", "MUS_E1M3", 155},
+{"HHUSTR_E1M4", "MUS_E1M4", 154},
+{"HHUSTR_E1M5", "MUS_E1M5", 151},
+{"HHUSTR_E1M6", "MUS_E1M6", 91},
+{"HHUSTR_E1M7", "MUS_E1M7", 128},
+{"HHUSTR_E1M8", "MUS_E1M8", 165},
+{"HHUSTR_E1M9", "MUS_E1M9", 0},
+
+{"HHUSTR_E2M1", "MUS_E2M1", 138},
+{"HHUSTR_E2M2", "MUS_E2M2", 133},
+{"HHUSTR_E2M3", "MUS_E2M3", 135},
+{"HHUSTR_E2M4", "MUS_E2M4", 140},
+{"HHUSTR_E2M5", "MUS_E1M4", 57},
+{"HHUSTR_E2M6", "MUS_E2M6", 136},
+{"HHUSTR_E2M7", "MUS_E2M7", 141},
+{"HHUSTR_E2M8", "MUS_E2M8", 95},
+{"HHUSTR_E2M9", "MUS_E2M9", 0}
+};
+
+script 1 (int which, int warppoint)
+{
+if(PlayerIsBot(PlayerNumber())) {Terminate;}
+if(LineSide() == 0)
+	{
+	SetFont("BIGFONT");
+	HudMessage(l:CurrentArea[which][0]; HUDMSG_FADEINOUT, 1, CR_GREEN, 0.5, 0.0, 5.0);
+	LocalSetMusic(CurrentArea[which][1],0);
+	if(warppoint == 1) {Teleport(0,CurrentArea[which][2],0);}
+	}
+}
+
+script 2 (int deactivateMarker)
+{
+if(GameType() == GAME_NET_DEATHMATCH) {Terminate;}
+
+switch(SwitchesRemain)
+	{
+	Case 6:
+	PrintBold(l:"HEREUNAB_SWITCH6");
+	Break;
+	
+	Case 5:
+	PrintBold(l:"HEREUNAB_SWITCH5");
+	Break;
+	
+	Case 4:
+	PrintBold(l:"HEREUNAB_SWITCH4");
+	Break;
+	
+	Case 3:
+	PrintBold(l:"HEREUNAB_SWITCH3");
+	Break;
+	
+	Case 2:
+	PrintBold(l:"HEREUNAB_SWITCH2");
+	Break;
+	
+	Case 1:
+	PrintBold(l:"HEREUNAB_SWITCH1");
+	Break;
+	}
+
+Thing_Remove(deactivateMarker);
+SwitchesRemain--;
+AmbientSound("misc/puzzle",128);
+AutoSave();
+}
+
+script 3 (void)
+{
+if(LineSide() == 0 && SwitchesRemain <= 0 && FinalDoorOpen == FALSE)
+	{
+	FinalDoorOpen = TRUE;
+	Door_Open(665,2);
+	AutoSave();
+	}
+}
+
+script 4 OPEN
+{
+if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {SwitchesRemain = 5;}
+if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {SwitchesRemain = 6;}
+}
+
+script 5 ENTER
+{
+if(GameType() == GAME_SINGLE_PLAYER) {Teleport_NoFog(0,0,664,0);}
+}
+
+script 6 OPEN
+{
+if(GameType() == GAME_NET_DEATHMATCH) {Door_Open(665,16); FinalDoorOpen = TRUE; Terminate;}
+if(!GameType() == GAME_SINGLE_PLAYER) {Terminate;}
+
+if(ThingCountName("KeyYellow",0) == 0 && GotYellow == FALSE) {GotYellow = TRUE; AutoSave();}
+if(ThingCountName("KeyGreen",0) == 0 && GotGreen == FALSE) {GotGreen = TRUE; AutoSave();}
+if(ThingCountName("KeyBlue",0) == 0 && GotBlue == FALSE) {GotBlue = TRUE; AutoSave();}
+if(ThingCountName("Artifly",0) == 0 && GotWings == FALSE) {GotWings = TRUE; AutoSave();}
+Delay(1);
+Restart;
+}
