@@ -3,7 +3,7 @@ This project is a continuation of Heretic unabridged v0.2 by beed28, https://for
 Getting permission by him to edit/fix this mod i'll try just improve the original mod whitout adding major changes in it.
 
 Target is:
-- Keep it most loyal to the beed228 version.
+- Keep it most loyal to the beed28 version.
 - Just add things that improve gameplay but dont change the gameplay heavily.
 - Fix errors of gameplay.
 
