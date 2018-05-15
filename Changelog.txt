@@ -9,5 +9,5 @@ Version - 1
 Version - 2 / Dev
 ------------
 + New Sector info for Episode 1. (Xindage)
-+ Episode 1 now only spawn multiplayers items on Deathmatch. (Xindage)
++ Episode 1 and 2 now only spawn multiplayers items on Deathmatch. (Xindage)
 + New comments for the source scripts. (PerfectionismTech)
