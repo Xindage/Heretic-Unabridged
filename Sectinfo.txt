@@ -18,3 +18,18 @@ names = {
 "\clEnding room" = {2229-2231,2352},
 "\cgWHAT!?" = {2232,2347,2350-2351,2354}
 }
+
+[E2M1]
+names = {
+"\cuChaos Device" = {1549-1599},
+"\cuSwitching Area" = {487-488, 1601-1613, 1615-1652, 1654-1658, 1660-1661},
+"\cdThe Crater" = {1-51, 1600},
+"\cdThe Lava Pits" = {52-208, 1614},
+"\cdThe River of Fire" = {183, 209-374},
+"\cdThe Ice Grotto" = {375-583, 1653, 1659},
+"\cdThe Catacombs" = {584-831},
+"\cdThe Labyrinth" = {832-1077},
+"\cdThe Great Hall" = {1078-1274},
+"\cdThe Portals of Chaos" = {1275-1359},
+"\cdThe Glacier" = {1360-1548, 1670-1673}
+}
