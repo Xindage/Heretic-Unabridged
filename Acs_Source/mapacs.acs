@@ -10,9 +10,9 @@ bool GotBlue = FALSE;
 bool GotWings = FALSE;
 
 // This array contains map names, music, and TIDs for warp points
-int CurrentArea[21][3] =
+int CurrentArea[48][3] =
 {
-	{"HHUSTR_E1M1", "MUS_E1M1", 664},
+	{"HHUSTR_E1M1", "MUS_E1M1", 664}, //0-8
 	{"HHUSTR_E1M2", "MUS_E1M2", 156},
 	{"HHUSTR_E1M3", "MUS_E1M3", 155},
 	{"HHUSTR_E1M4", "MUS_E1M4", 154},
@@ -22,7 +22,7 @@ int CurrentArea[21][3] =
 	{"HHUSTR_E1M8", "MUS_E1M8", 165},
 	{"HHUSTR_E1M9", "MUS_E1M9", 0},
 	
-	{"HHUSTR_E2M1", "MUS_E2M1", 138},
+	{"HHUSTR_E2M1", "MUS_E2M1", 138}, //9-17
 	{"HHUSTR_E2M2", "MUS_E2M2", 133},
 	{"HHUSTR_E2M3", "MUS_E2M3", 135},
 	{"HHUSTR_E2M4", "MUS_E2M4", 140},
@@ -32,7 +32,37 @@ int CurrentArea[21][3] =
 	{"HHUSTR_E2M8", "MUS_E2M8", 95},
 	{"HHUSTR_E2M9", "MUS_E2M9", 0},
 
-	{"Raven's Lair", "MUS_E3M2", 0},
+	{"HHUSTR_E3M1", "MUS_E1M1", 0}, //18-26
+	{"HHUSTR_E3M2", "MUS_E3M2", 0},
+	{"HHUSTR_E3M3", "MUS_E3M3", 0},
+	{"HHUSTR_E3M4", "MUS_E1M6", 0},
+	{"HHUSTR_E3M5", "MUS_E1M3", 0},
+	{"HHUSTR_E3M6", "MUS_E1M2", 0},
+	{"HHUSTR_E3M7", "MUS_E1M5", 0},
+	{"HHUSTR_E3M8", "MUS_E1M9", 0},
+	{"HHUSTR_E3M9", "MUS_E2M6", 0},
+
+	{"HHUSTR_E4M1", "MUS_E1M6", 0}, //27-35
+	{"HHUSTR_E4M2", "MUS_E1M2", 0},
+	{"HHUSTR_E4M3", "MUS_E1M3", 0},
+	{"HHUSTR_E4M4", "MUS_E1M4", 0},
+	{"HHUSTR_E4M5", "MUS_E1M5", 0},
+	{"HHUSTR_E4M6", "MUS_E1M1", 0},
+	{"HHUSTR_E4M7", "MUS_E1M7", 0},
+	{"HHUSTR_E4M8", "MUS_E1M8", 0},
+	{"HHUSTR_E4M9", "MUS_E1M9", 0},
+
+	{"HHUSTR_E5M1", "MUS_E2M1", 0}, //36-44
+	{"HHUSTR_E5M2", "MUS_E2M2", 0},
+	{"HHUSTR_E5M3", "MUS_E2M3", 0},
+	{"HHUSTR_E5M4", "MUS_E2M4", 0},
+	{"HHUSTR_E5M5", "MUS_E1M4", 0},
+	{"HHUSTR_E5M6", "MUS_E2M6", 0},
+	{"HHUSTR_E5M7", "MUS_E2M7", 0},
+	{"HHUSTR_E5M8", "MUS_E2M8", 0},
+	{"HHUSTR_E5M9", "MUS_E2M9", 0},
+
+	{"Raven's Lair", "MUS_E3M2", 0}, // 45-47
 	{"The Water Shrine", "MUS_E3M3", 0},
 	{"American's Legacy", "MUS_E1M6", 0}
 };
