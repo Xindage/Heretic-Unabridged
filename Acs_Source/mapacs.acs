@@ -32,9 +32,9 @@ int CurrentArea[21][3] =
 	{"HHUSTR_E2M8", "MUS_E2M8", 95},
 	{"HHUSTR_E2M9", "MUS_E2M9", 0},
 
-	{"HHUSTR_E6M1", "MUS_E3M2", 0},
-	{"HHUSTR_E6M2", "MUS_E3M3", 0},
-	{"HHUSTR_E6M3", "MUS_E1M6", 0}
+	{"Raven's Lair", "MUS_E3M2", 0},
+	{"The Water Shrine", "MUS_E3M3", 0},
+	{"American's Legacy", "MUS_E1M6", 0}
 };
 
 script 1 (int which, int warppoint)
