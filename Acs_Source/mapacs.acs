@@ -10,7 +10,7 @@ bool GotBlue = FALSE;
 bool GotWings = FALSE;
 
 // This array contains map names, music, and TIDs for warp points
-int CurrentArea[18][3] =
+int CurrentArea[21][3] =
 {
 	{"HHUSTR_E1M1", "MUS_E1M1", 664},
 	{"HHUSTR_E1M2", "MUS_E1M2", 156},
@@ -30,7 +30,11 @@ int CurrentArea[18][3] =
 	{"HHUSTR_E2M6", "MUS_E2M6", 136},
 	{"HHUSTR_E2M7", "MUS_E2M7", 141},
 	{"HHUSTR_E2M8", "MUS_E2M8", 95},
-	{"HHUSTR_E2M9", "MUS_E2M9", 0}
+	{"HHUSTR_E2M9", "MUS_E2M9", 0},
+
+	{"HHUSTR_E6M1", "MUS_E3M2", 0},
+	{"HHUSTR_E6M2", "MUS_E3M3", 0},
+	{"HHUSTR_E6M3", "MUS_E1M6", 0}
 };
 
 script 1 (int which, int warppoint)
@@ -102,6 +106,7 @@ script 4 OPEN
 	// Sets the number of switches that need to be pulled based on the episode
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {SwitchesRemain = 5;}
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {SwitchesRemain = 6;}
+	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 6) {SwitchesRemain = 2;}
 }
 
 script 5 ENTER
