@@ -85,3 +85,8 @@ ACTOR ObjectiveMarker6 : MapMarker 1006
 ACTOR MaceSpawner2 : MaceSpawner 3001 {}
 ACTOR MaceSpawner3 : MaceSpawner 3002 {}
 ACTOR MaceSpawner4 : MaceSpawner 3003 {}
+ACTOR MaceSpawner5 : MaceSpawner 3004 {}
+ACTOR MaceSpawner6 : MaceSpawner 3005 {}
+ACTOR MaceSpawner7 : MaceSpawner 3006 {}
+ACTOR MaceSpawner8 : MaceSpawner 3007 {}
+ACTOR MaceSpawner9 : MaceSpawner 3008 {}

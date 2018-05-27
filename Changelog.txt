@@ -12,4 +12,7 @@ Version - 2 / Dev
 + New Sector info for Episode 1 and 2. (Xindage)
 + Episode 1 and 2 now only spawn multiplayers items on Deathmatch. (Xindage)
 + New comments for the source scripts. (PerfectionismTech)
++ Maces spawners incread up to 9. (Xindage)
++ Episode 1 has each area applying its own mace chance in deathmatch. (Xindage)
++ Players cannot get stuck anymore in mystic urn pit in citadel. (Xindage)
 ! Sector info for episode 1 is bugged for now.
