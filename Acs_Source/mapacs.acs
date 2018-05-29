@@ -8,6 +8,8 @@ bool GotYellow = FALSE;
 bool GotGreen = FALSE;
 bool GotBlue = FALSE;
 bool GotWings = FALSE;
+str Camera = "SecurityCamera";
+
 
 // This array contains map names, music, and TIDs for warp points
 int CurrentArea[48][3] =
@@ -159,4 +161,30 @@ script 6 OPEN
 	if(ThingCountName("Artifly",0) == 0 && GotWings == FALSE) {GotWings = TRUE; AutoSave();}
 	Delay(1);
 	Restart;
+}
+
+// ON BETA TEST!!!
+script 7 OPEN
+{
+	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1)
+	{
+		Spawn(Camera, -4992.0, -7472.0, 65.0 , 9001, 64); // Docks
+		SetCameraToTexture(9001, "Camera1", 90);
+		Spawn(Camera, -3024.0, -9232.0, 121.0 , 9002, 160); // Dungeons
+		SetCameraToTexture(9002, "Camera2", 90);
+		Spawn(Camera, -3936.0, 1200.0, 113.0 , 9003, 192); // Gatehouse
+		SetCameraToTexture(9003, "Camera3", 90);
+		Spawn(Camera, -4224.0, -3584.0, 65.0 , 9004, 0); // Guard Tower
+		SetCameraToTexture(9004, "Camera4", 90);
+		Spawn(Camera, -1568.0, -1504.0, 57.0 , 9005, 64); // Citadel
+		SetCameraToTexture(9005, "Camera5", 90);
+		Spawn(Camera, -352.0, 4928.0, 33.0 , 9006, 192); // Cathedral
+		SetCameraToTexture(9006, "Camera6", 90);
+		Spawn(Camera, 3104.0, -160.0, 249.0 , 9007, 192); // Crypts
+		SetCameraToTexture(9007, "Camera7", 90);
+		Spawn(Camera, 6016.0, 2688.0, 297.0 , 9008, 64); // Hell's maw
+		SetCameraToTexture(9008, "Camera8", 90);
+		Delay(35);
+		Floor_LowerToLowest(165, 8);
+	}
 }

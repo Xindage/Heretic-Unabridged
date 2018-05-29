@@ -1,0 +1,8 @@
+cameratexture CAMERA1 256 160 fit 256 160
+cameratexture CAMERA2 256 160 fit 256 160
+cameratexture CAMERA3 256 160 fit 256 160
+cameratexture CAMERA4 256 160 fit 256 160
+cameratexture CAMERA5 256 160 fit 256 160
+cameratexture CAMERA6 256 160 fit 256 160
+cameratexture CAMERA7 256 160 fit 256 160
+cameratexture CAMERA8 256 160 fit 256 160

@@ -4,19 +4,18 @@
 
 [E1M1]
 names = {
-"\cuChaos Device" = {2280-2330},
-"\cuSwitching Area" = {19,1039,1420,2210,2213,2233-2272,2274-2279,2337-2346,2355-2357},
-"\cdThe Docks" = {0-18,20-153,2348-2349},
-"\cdThe Dungeons" = {154-400},
-"\cdThe Gatehouse" = {699-883,2353},
-"\cdThe Guard Tower" = {401-698},
-"\cdThe Citadel" = {884-1365},
-"\cdThe Cathedral" = {1366-1656,2211,2273},
-"\cdThe Crypts" = {1657-1987},
-"\cdHell's maw" = {1988-2033,2035-2048,2331},
-"\cdThe Graveyard" = {2034,2049-2209,2212,2214-2228,2332-2336},
-"\clEnding room" = {2229-2231,2352},
-"\cgWHAT!?" = {2232,2347,2350-2351,2354}
+"\cuChaos Device" = {2428-2494},
+"\cuSwitching Area" = {2329-2424},
+"\cdThe Docks" = {0-156},
+"\cdThe Dungeons" = {157-403},
+"\cdThe Gatehouse" = {404-593},
+"\cdThe Guard Tower" = {594-910},
+"\cdThe Citadel" = {911-1403},
+"\cdThe Cathedral" = {1404-1699},
+"\cdThe Crypts" = {1700-2032},
+"\cdHell's maw" = {2033-2099},
+"\cdThe Graveyard" = {2100-2328},
+"\clIn ocean!" = {2425-2427}
 }
 
 [E2M1]
