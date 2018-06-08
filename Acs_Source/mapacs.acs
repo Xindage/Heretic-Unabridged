@@ -8,6 +8,8 @@ bool GotYellow = FALSE;
 bool GotGreen = FALSE;
 bool GotBlue = FALSE;
 bool GotWings = FALSE;
+bool LoopChaos = TRUE;
+bool LoopWings = TRUE;
 str Camera = "SecurityCamera";
 
 
@@ -130,6 +132,11 @@ script 3 (void)
 		FinalDoorOpen = TRUE;
 		Door_Open(665,2); // Open the final door
 		AutoSave();
+		// Since in multiplayer all players gain a chaos device, give activator a dummy item to prevent him of gaining one.
+		if(gameType() == GAME_NET_COOPERATIVE)
+			{
+			GiveInventory("Nochaos", 1);
+			}
 	}
 }
 
@@ -143,28 +150,75 @@ script 4 OPEN
 
 script 5 ENTER
 {
-	// Starts the player in the docks in singleplayer
-	if(GameType() == GAME_SINGLE_PLAYER) {Teleport_NoFog(0,0,664,0);}
+	// Starts the player in the docks in singleplayer.
+	if(GameType() == GAME_SINGLE_PLAYER)
+		{
+		Teleport_NoFog(0,0,664,0);
+		}
+	// Then give player a id tag.
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
 }
 
-script 6 OPEN
+script 6 RESPAWN
 {
-	if(GameType() == GAME_NET_DEATHMATCH) {Door_Open(665,16); FinalDoorOpen = TRUE; Terminate;}
-	// Open the final door in deathmatch
-	
-	if(!GameType() == GAME_SINGLE_PLAYER) {Terminate;} // Only autosave in singleplayer
-	
-	// Automatically save when the player picks up a key or the wings
-	if(ThingCountName("KeyYellow",0) == 0 && GotYellow == FALSE) {GotYellow = TRUE; AutoSave();}
-	if(ThingCountName("KeyGreen",0) == 0 && GotGreen == FALSE) {GotGreen = TRUE; AutoSave();}
-	if(ThingCountName("KeyBlue",0) == 0 && GotBlue == FALSE) {GotBlue = TRUE; AutoSave();}
-	if(ThingCountName("Artifly",0) == 0 && GotWings == FALSE) {GotWings = TRUE; AutoSave();}
+	// Enforce players in his tags.
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+}
+
+script 7 OPEN // Bollean switchs only for non deathmatch games.
+{
+	if(GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
+		{	
+		// Automatically save when the player picks up a key or the wings in singleplayer.
+		if(ThingCountName("KeyYellow",0) == 0 && GotYellow == FALSE) {GotYellow = TRUE; AutoSave();}
+		if(ThingCountName("KeyGreen",0) == 0 && GotGreen == FALSE) {GotGreen = TRUE; AutoSave();}
+		if(ThingCountName("KeyBlue",0) == 0 && GotBlue == FALSE) {GotBlue = TRUE; AutoSave();}
+		if(ThingCountName("Artifly",0) == 0 && GotWings == FALSE) {GotWings = TRUE; AutoSave();}
+		// Terminate script when all objectives is met.
+		if(GotYellow == TRUE && GotGreen == TRUE && GotBlue == TRUE && GotWings == TRUE) {Terminate;}
+		Delay(1);
+		Restart;
+		}
+	else {Terminate;}
+}
+
+script 8 OPEN
+{
+	// Open the final door in deathmatch.
+	if(GameType() == GAME_NET_DEATHMATCH)
+		{
+		Door_Open(665,16);
+		FinalDoorOpen = TRUE;
+		Terminate;
+		}
+	if(GameType() == GAME_NET_COOPERATIVE)
+	{
+		if(GotWings == TRUE && LoopWings == TRUE) // Give wings of wrath for every player in game.
+		{
+			PrintBold(l:"WINGSGIVING");
+			if(!CheckActorInventory(1000 + PlayerNumber(), "ArtiFly"))
+				{
+					GiveInventory("ArtiFly", 1);
+				}
+			LoopWings = FALSE;
+		}
+		if(FinalDoorOpen == TRUE && LoopChaos == TRUE) // Give chaos device for every player in game.
+			{
+			PrintBold(l:"CHAOSGIVING");
+			if(!CheckActorInventory(1000 + PlayerNumber(), "NoChaos"))
+				{
+					GiveInventory("ArtiTeleport", 1);
+				}
+			LoopChaos = FALSE;
+			}
+		// Terminate script when all objectives is met.
+		if(GotWings == TRUE && FinalDoorOpen == TRUE) {Terminate;}
+	}
 	Delay(1);
 	Restart;
 }
 
-// ON BETA TEST!!!
-script 7 OPEN
+script 9 OPEN
 {
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1)
 	{
