@@ -18,14 +18,14 @@ names = {
 "\clIn ocean!" = {2425-2427}
 }
 
-[E2M1]
+[E2M1] // maybe bugged
 names = {
-"\cuChaos Device" = {1549-1599},
+"\cuChaos Device" = {1625-1691},
 "\cuSwitching Area" = {487-488, 1601-1613, 1615-1652, 1654-1658, 1660-1661},
 "\cdThe Crater" = {1-51, 1600},
 "\cdThe Lava Pits" = {52-208, 1614},
 "\cdThe River of Fire" = {183, 209-374},
-"\cdThe Ice Grotto" = {375-583, 1653, 1659},
+"\cdThe Ice Grotto" = {375-583},
 "\cdThe Catacombs" = {584-831},
 "\cdThe Labyrinth" = {832-1077},
 "\cdThe Great Hall" = {1078-1274},

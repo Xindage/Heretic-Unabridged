@@ -239,6 +239,27 @@ script 9 OPEN
 		Spawn(Camera, 6016.0, 2688.0, 297.0 , 9008, 64); // Hell's maw
 		SetCameraToTexture(9008, "Camera8", 90);
 		Delay(35);
-		Floor_LowerToLowest(165, 8);
+		Floor_LowerToLowest(165, 8); //60x's tags needs to be applyed.
+	}
+	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2)
+	{
+		Spawn(Camera, 6560.0, 3328.0, 113.0 , 9001, 192); // Crater
+		SetCameraToTexture(9001, "Camera1", 90);
+		Spawn(Camera, 5312.0, 3520.0, 25.0 , 9002, 96); // Lava Pits
+		SetCameraToTexture(9002, "Camera2", 90);
+		Spawn(Camera, 1760.0, 864.0, 201.0 , 9003, 192); // River of Fire
+		SetCameraToTexture(9003, "Camera3", 90);
+		Spawn(Camera, -1888.0, 3360.0, 9.0 , 9004, 160); // Ice Grotto
+		SetCameraToTexture(9004, "Camera4", 90);
+		Spawn(Camera, -6144.0, 1248.0, 57.0 , 9005, 128); // Catacombs
+		SetCameraToTexture(9005, "Camera5", 90);
+		Spawn(Camera, 448.0, 9600.0, 25.0 , 9006, 160); // Labyrinth
+		SetCameraToTexture(9006, "Camera6", 90);
+		Spawn(Camera, 5376.0, -128.0, 345.0 , 9007, 192); // Great Hall
+		SetCameraToTexture(9007, "Camera7", 90);
+		Spawn(Camera, 4640.0, -5184.0, 177.0 , 9008, 192); // Portals of Chaos
+		SetCameraToTexture(9008, "Camera8", 90);
+		Delay(35);
+		Floor_LowerToLowest(601, 8);
 	}
 }
