@@ -130,7 +130,8 @@ script 3 (void)
 	if(LineSide() == 0 && SwitchesRemain <= 0 && FinalDoorOpen == FALSE)
 	{
 		FinalDoorOpen = TRUE;
-		Door_Open(665,2); // Open the final door
+		Door_Open(665,8); // Open the final door
+		Floor_LowerToLowest(608, 8);
 		AutoSave();
 		// Since in multiplayer all players gain a chaos device, give activator a dummy item to prevent him of gaining one.
 		if(gameType() == GAME_NET_COOPERATIVE)
@@ -239,7 +240,7 @@ script 9 OPEN
 		Spawn(Camera, 6016.0, 2688.0, 297.0 , 9008, 64); // Hell's maw
 		SetCameraToTexture(9008, "Camera8", 90);
 		Delay(35);
-		Floor_LowerToLowest(165, 8); //60x's tags needs to be applyed.
+		Floor_LowerToLowest(601, 8);
 	}
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2)
 	{
