@@ -196,6 +196,7 @@ script 8 OPEN
 	{
 		if(GotWings == TRUE && LoopWings == TRUE) // Give wings of wrath for every player in game.
 		{
+			AmbientSound("misc/hexflash",128);
 			PrintBold(l:"WINGSGIVING");
 			if(!CheckActorInventory(1000 + PlayerNumber(), "ArtiFly"))
 				{
@@ -205,6 +206,7 @@ script 8 OPEN
 		}
 		if(FinalDoorOpen == TRUE && LoopChaos == TRUE) // Give chaos device for every player in game.
 			{
+			AmbientSound("misc/hexflash",128);
 			PrintBold(l:"CHAOSGIVING");
 			if(!CheckActorInventory(1000 + PlayerNumber(), "NoChaos"))
 				{
@@ -252,7 +254,7 @@ script 9 OPEN
 		SetCameraToTexture(9003, "Camera3", 90);
 		Spawn(Camera, -1888.0, 3360.0, 9.0 , 9004, 160); // Ice Grotto
 		SetCameraToTexture(9004, "Camera4", 90);
-		Spawn(Camera, -6144.0, 1248.0, 57.0 , 9005, 128); // Catacombs
+		Spawn(Camera, -6144.0, 1184.0, 57.0 , 9005, 128); // Catacombs
 		SetCameraToTexture(9005, "Camera5", 90);
 		Spawn(Camera, 448.0, 9600.0, 25.0 , 9006, 160); // Labyrinth
 		SetCameraToTexture(9006, "Camera6", 90);

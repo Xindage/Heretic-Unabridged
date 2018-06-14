@@ -1,1 +1,2 @@
 misc/puzzle		puzslv1
+misc/hexflash		art1
