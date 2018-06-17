@@ -11,12 +11,6 @@ episode e2m1
 	key = "h"
 }
 
-episode e6m1
-{
-	name = "Fate's Path"
-	key = "f"
-}
-
 map E1M1 lookup "MNU_COTD"
 {
 	next = "EndGame1"
@@ -65,11 +59,4 @@ cluster 2
 	flat = "FLATHUH1"
 	music = "MUS_CPTD"
 	exittext = lookup, "HE2TEXT"
-}
-
-cluster 6 // Still WIP
-{
-	hub
-	flat = "FLOOR25"
-	music = "MUS_CPTD"
 }

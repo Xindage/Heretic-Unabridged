@@ -8,8 +8,6 @@ bool GotYellow = FALSE;
 bool GotGreen = FALSE;
 bool GotBlue = FALSE;
 bool GotWings = FALSE;
-bool LoopChaos = TRUE;
-bool LoopWings = TRUE;
 str Camera = "SecurityCamera";
 
 
@@ -73,9 +71,9 @@ int CurrentArea[48][3] =
 
 script 1 (int which, int warppoint)
 {
-	// For when the player crosses in to a new map
-	if(PlayerIsBot(PlayerNumber())) {Terminate;} // Not if the player is a bot
-	if(LineSide() == 0)
+	// For when the player crosses in to a new map, don't let the script run if:
+	// Line is not not activated on front and player is a bot.
+	if(LineSide() == 0 && !PlayerIsBot(PlayerNumber()))
 	{
 		// Set the music and map name
 		SetFont("BIGFONT");
@@ -83,6 +81,7 @@ script 1 (int which, int warppoint)
 		LocalSetMusic(CurrentArea[which][1],0);
 		if(warppoint == 1) {Teleport(0,CurrentArea[which][2],0);} // Optionally teleport
 	}
+	else {Terminate;}
 }
 
 script 2 (int deactivateMarker)
@@ -124,107 +123,53 @@ script 2 (int deactivateMarker)
 	AutoSave();
 }
 
-script 3 (void)
+script 3 (int action)
 {
 	// Check if the final door should be opened
-	if(LineSide() == 0 && SwitchesRemain <= 0 && FinalDoorOpen == FALSE)
+	if(action == 0 && LineSide() == 0 && SwitchesRemain <= 0 && FinalDoorOpen == FALSE)
 	{
 		FinalDoorOpen = TRUE;
 		Door_Open(665,8); // Open the final door
 		Floor_LowerToLowest(608, 8);
 		AutoSave();
-		// Since in multiplayer all players gain a chaos device, give activator a dummy item to prevent him of gaining one.
-		if(gameType() == GAME_NET_COOPERATIVE)
-			{
-			GiveInventory("Nochaos", 1);
-			}
+		if(GameType() == GAME_NET_COOPERATIVE) // If it's a multiplayer game deliver chaos devices to the others players.
+		{
+			// Kill players's tag for now
+			Thing_ChangeTID(1000 + PlayerNumber(), 2000 + PlayerNumber());
+			AmbientSound("misc/hexflash",128);
+			PrintBold(l:"CHAOSGIVING");
+			for (int n1 = 0; n1 < PlayerCount(); n1++)
+			GiveActorInventory(1000 + n1, "ArtiTeleport", 1);
+			Delay(1);
+			// Return player's tag.
+			Thing_ChangeTID(2000 + PlayerNumber(), 1000 + PlayerNumber());
+		}
+	}
+	if(Action == 1 && GotWings == FALSE)
+	{
+		GotWings = TRUE;
+		AutoSave();
+		if(GameType() == GAME_NET_COOPERATIVE)
+		{
+			// Kill players's tag for now
+			Thing_ChangeTID(1000 + PlayerNumber(), 2000 + PlayerNumber());
+			AmbientSound("misc/hexflash",128);
+			PrintBold(l:"WINGSGIVING");
+			for (int n2 = 0; n2 < PlayerCount(); n2++)
+			GiveActorInventory(1000 + n2, "Artifly", 1);
+			Delay(1);
+			// Return player's tag.
+			Thing_ChangeTID(2000 + PlayerNumber(), 1000 + PlayerNumber());
+		}
 	}
 }
 
 script 4 OPEN
 {
-	// Sets the number of switches that need to be pulled based on the episode
-	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {SwitchesRemain = 5;}
-	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {SwitchesRemain = 6;}
-	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 6) {SwitchesRemain = 2;}
-}
-
-script 5 ENTER
-{
-	// Starts the player in the docks in singleplayer.
-	if(GameType() == GAME_SINGLE_PLAYER)
-		{
-		Teleport_NoFog(0,0,664,0);
-		}
-	// Then give player a id tag.
-	Thing_ChangeTID(0, 1000 + PlayerNumber());
-}
-
-script 6 RESPAWN
-{
-	// Enforce players in his tags.
-	Thing_ChangeTID(0, 1000 + PlayerNumber());
-}
-
-script 7 OPEN // Bollean switchs only for non deathmatch games.
-{
-	if(GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
-		{	
-		// Automatically save when the player picks up a key or the wings in singleplayer.
-		if(ThingCountName("KeyYellow",0) == 0 && GotYellow == FALSE) {GotYellow = TRUE; AutoSave();}
-		if(ThingCountName("KeyGreen",0) == 0 && GotGreen == FALSE) {GotGreen = TRUE; AutoSave();}
-		if(ThingCountName("KeyBlue",0) == 0 && GotBlue == FALSE) {GotBlue = TRUE; AutoSave();}
-		if(ThingCountName("Artifly",0) == 0 && GotWings == FALSE) {GotWings = TRUE; AutoSave();}
-		// Terminate script when all objectives is met.
-		if(GotYellow == TRUE && GotGreen == TRUE && GotBlue == TRUE && GotWings == TRUE) {Terminate;}
-		Delay(1);
-		Restart;
-		}
-	else {Terminate;}
-}
-
-script 8 OPEN
-{
-	// Open the final door in deathmatch.
-	if(GameType() == GAME_NET_DEATHMATCH)
-		{
-		Door_Open(665,16);
-		FinalDoorOpen = TRUE;
-		Terminate;
-		}
-	if(GameType() == GAME_NET_COOPERATIVE)
-	{
-		if(GotWings == TRUE && LoopWings == TRUE) // Give wings of wrath for every player in game.
-		{
-			AmbientSound("misc/hexflash",128);
-			PrintBold(l:"WINGSGIVING");
-			if(!CheckActorInventory(1000 + PlayerNumber(), "ArtiFly"))
-				{
-					GiveInventory("ArtiFly", 1);
-				}
-			LoopWings = FALSE;
-		}
-		if(FinalDoorOpen == TRUE && LoopChaos == TRUE) // Give chaos device for every player in game.
-			{
-			AmbientSound("misc/hexflash",128);
-			PrintBold(l:"CHAOSGIVING");
-			if(!CheckActorInventory(1000 + PlayerNumber(), "NoChaos"))
-				{
-					GiveInventory("ArtiTeleport", 1);
-				}
-			LoopChaos = FALSE;
-			}
-		// Terminate script when all objectives is met.
-		if(GotWings == TRUE && FinalDoorOpen == TRUE) {Terminate;}
-	}
-	Delay(1);
-	Restart;
-}
-
-script 9 OPEN
-{
+	// Sets the cameras coordinates and the number of switches that need to be pulled based on the episode.
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1)
 	{
+		SwitchesRemain = 5;
 		Spawn(Camera, -4992.0, -7472.0, 65.0 , 9001, 64); // Docks
 		SetCameraToTexture(9001, "Camera1", 90);
 		Spawn(Camera, -3024.0, -9232.0, 121.0 , 9002, 160); // Dungeons
@@ -246,6 +191,7 @@ script 9 OPEN
 	}
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2)
 	{
+		SwitchesRemain = 6;
 		Spawn(Camera, 6560.0, 3328.0, 113.0 , 9001, 192); // Crater
 		SetCameraToTexture(9001, "Camera1", 90);
 		Spawn(Camera, 5312.0, 3520.0, 25.0 , 9002, 96); // Lava Pits
@@ -265,4 +211,44 @@ script 9 OPEN
 		Delay(35);
 		Floor_LowerToLowest(601, 8);
 	}
+}
+
+script 5 ENTER
+{
+	// Starts the player in the docks in single player.
+	if(GameType() == GAME_SINGLE_PLAYER)
+	{
+		Teleport_NoFog(0,0,664,0);
+	}
+	// Then give player a id tag.
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+}
+
+script 6 RESPAWN
+{
+	// Enforce players in his tags.
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+}
+
+script 7 OPEN // Script sets that is used when game start.
+{
+	if(GameType() == GAME_SINGLE_PLAYER)
+		{	
+		// Automatically save when the player picks up a key in singleplayer.
+		if(ThingCountName("KeyYellow",0) == 0 && GotYellow == FALSE) {GotYellow = TRUE; AutoSave();}
+		if(ThingCountName("KeyGreen",0) == 0 && GotGreen == FALSE) {GotGreen = TRUE; AutoSave();}
+		if(ThingCountName("KeyBlue",0) == 0 && GotBlue == FALSE) {GotBlue = TRUE; AutoSave();}
+		// Terminate script when all objectives is met.
+		if(GotYellow == TRUE && GotGreen == TRUE && GotBlue == TRUE) {Terminate;}
+		Delay(1);
+		Restart;
+		}
+	// Open the final door in deathmatch.
+	if(GameType() == GAME_NET_DEATHMATCH)
+		{
+		Door_Open(665,16);
+		FinalDoorOpen = TRUE;
+		GotWings = TRUE;
+		Terminate;
+		}
 }

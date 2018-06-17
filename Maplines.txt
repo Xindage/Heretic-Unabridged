@@ -1,5 +1,5 @@
 include "xlat/heretic.txt"
 997 = WALK|REP, ACS_ExecuteAlways (1, 0, tag, 0, 0)
 998 = WALK|REP, ACS_ExecuteAlways (1, 0, tag, 1, 0)
-999 = WALK|REP, ACS_Execute (3, 0, 0, 0, 0)
+999 = WALK|REP, ACS_Execute (3, 0, tag, 0, 0)
 1000 = USE, ACS_Execute (2, 0, tag, 0, 0)

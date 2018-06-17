@@ -8,7 +8,6 @@ Version - 1
 ------------
 Version - 2 / Dev
 ------------
-+ Episode 6 Added, Fate's Path. (Buged and WIP)
 + New Sector info for Episode 1 and 2. (Xindage)
 + Episode 1 and 2 now only spawn multiplayers items on Deathmatch. (Xindage)
 + New comments for the source scripts. (PerfectionismTech)
@@ -16,5 +15,7 @@ Version - 2 / Dev
 + Episode 1 and 2 has each area applying its own mace chance in deathmatch. (Xindage)
 + Players cannot get stuck anymore in mystic urn pit in citadel. (Xindage)
 + Add camera spots on map via scripting, to be used in chaos room. (Xindage)
-+ Everyone in game gain a wing of wrath when someone pick it in multiplayer coop. (Xindage, PerfectionismTech)
-+ Everyone in game gain a chaos device when someone reach the final area in multiplyaer coop. (Xindage, PerfectionismTech)
++ Everyone in game gain a wing of wrath when someone pick it in multiplayer coop. (Xindage, PerfectionismTech, Madjack)
++ Everyone in game gain a chaos device when someone reach the final area in multiplyaer coop. (Xindage, PerfectionismTech, Madjack)
++ Final doors open slight faster. (Xindage)
++ Using chaos device right after opening the final door still let you reach the final map. (Xindage)
