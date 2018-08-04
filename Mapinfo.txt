@@ -30,19 +30,8 @@ map E2M1 lookup "MNU_HELLSMAW"
 	translator = "maplines"
 	cluster = 2
 	infiniteflightpowerup
-	minotaurspecial
-	specialaction_lowerfloortohighest
+	SpecialAction = "Minotaur", "ACS_Execute", 8, 0
 	music = "MUS_E2M1"
-}
-
-map E6M1 lookup "Fate's Path"
-{
-	next = "EndGame"
-	sky1 = "SKY1"
-	translator = "maplines"
-	cluster = 6
-	infiniteflightpowerup
-	music = "MUS_E3M2"
 }
 
 cluster 1
