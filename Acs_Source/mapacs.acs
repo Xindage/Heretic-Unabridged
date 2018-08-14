@@ -11,57 +11,58 @@ bool GotWings = FALSE;
 str Camera = "SecurityCamera";
 
 
-// This array contains map names, music, and TIDs for warp points
+// This array contains map names, music, TIDs for warp points and references tags for mapping.
+// Tag 619 is used when the starting point is different than the warp in ExM1.
 int CurrentArea[48][3] =
 {
-	{"HHUSTR_E1M1", "MUS_E1M1", 664}, //0-8
-	{"HHUSTR_E1M2", "MUS_E1M2", 156},
-	{"HHUSTR_E1M3", "MUS_E1M3", 155},
-	{"HHUSTR_E1M4", "MUS_E1M4", 154},
-	{"HHUSTR_E1M5", "MUS_E1M5", 151},
-	{"HHUSTR_E1M6", "MUS_E1M6", 91},
-	{"HHUSTR_E1M7", "MUS_E1M7", 128},
-	{"HHUSTR_E1M8", "MUS_E1M8", 165},
+	{"HHUSTR_E1M1", "MUS_E1M1", 611}, //0-8
+	{"HHUSTR_E1M2", "MUS_E1M2", 612},
+	{"HHUSTR_E1M3", "MUS_E1M3", 613},
+	{"HHUSTR_E1M4", "MUS_E1M4", 614},
+	{"HHUSTR_E1M5", "MUS_E1M5", 615},
+	{"HHUSTR_E1M6", "MUS_E1M6", 616},
+	{"HHUSTR_E1M7", "MUS_E1M7", 617},
+	{"HHUSTR_E1M8", "MUS_E1M8", 618},
 	{"HHUSTR_E1M9", "MUS_E1M9", 0},
 	
-	{"HHUSTR_E2M1", "MUS_E2M1", 138}, //9-17
-	{"HHUSTR_E2M2", "MUS_E2M2", 133},
-	{"HHUSTR_E2M3", "MUS_E2M3", 135},
-	{"HHUSTR_E2M4", "MUS_E2M4", 140},
-	{"HHUSTR_E2M5", "MUS_E1M4", 57},
-	{"HHUSTR_E2M6", "MUS_E2M6", 136},
-	{"HHUSTR_E2M7", "MUS_E2M7", 141},
-	{"HHUSTR_E2M8", "MUS_E2M8", 95},
+	{"HHUSTR_E2M1", "MUS_E2M1", 619}, //9-17
+	{"HHUSTR_E2M2", "MUS_E2M2", 612},
+	{"HHUSTR_E2M3", "MUS_E2M3", 613},
+	{"HHUSTR_E2M4", "MUS_E2M4", 614},
+	{"HHUSTR_E2M5", "MUS_E1M4", 615},
+	{"HHUSTR_E2M6", "MUS_E2M6", 616},
+	{"HHUSTR_E2M7", "MUS_E2M7", 617},
+	{"HHUSTR_E2M8", "MUS_E2M8", 618},
 	{"HHUSTR_E2M9", "MUS_E2M9", 0},
 
-	{"HHUSTR_E3M1", "MUS_E1M1", 0}, //18-26
-	{"HHUSTR_E3M2", "MUS_E3M2", 0},
-	{"HHUSTR_E3M3", "MUS_E3M3", 0},
-	{"HHUSTR_E3M4", "MUS_E1M6", 0},
-	{"HHUSTR_E3M5", "MUS_E1M3", 0},
-	{"HHUSTR_E3M6", "MUS_E1M2", 0},
-	{"HHUSTR_E3M7", "MUS_E1M5", 0},
-	{"HHUSTR_E3M8", "MUS_E1M9", 0},
+	{"HHUSTR_E3M1", "MUS_E1M1", 611}, //18-26
+	{"HHUSTR_E3M2", "MUS_E3M2", 612},
+	{"HHUSTR_E3M3", "MUS_E3M3", 613},
+	{"HHUSTR_E3M4", "MUS_E1M6", 614},
+	{"HHUSTR_E3M5", "MUS_E1M3", 615},
+	{"HHUSTR_E3M6", "MUS_E1M2", 616},
+	{"HHUSTR_E3M7", "MUS_E1M5", 617},
+	{"HHUSTR_E3M8", "MUS_E1M9", 618},
 	{"HHUSTR_E3M9", "MUS_E2M6", 0},
 
-	{"HHUSTR_E4M1", "MUS_E1M6", 0}, //27-35
-	{"HHUSTR_E4M2", "MUS_E1M2", 0},
-	{"HHUSTR_E4M3", "MUS_E1M3", 0},
-	{"HHUSTR_E4M4", "MUS_E1M4", 0},
-	{"HHUSTR_E4M5", "MUS_E1M5", 0},
-	{"HHUSTR_E4M6", "MUS_E1M1", 0},
-	{"HHUSTR_E4M7", "MUS_E1M7", 0},
-	{"HHUSTR_E4M8", "MUS_E1M8", 0},
+	{"HHUSTR_E4M1", "MUS_E1M6", 611}, //27-35
+	{"HHUSTR_E4M2", "MUS_E1M2", 612},
+	{"HHUSTR_E4M3", "MUS_E1M3", 613},
+	{"HHUSTR_E4M4", "MUS_E1M4", 614},
+	{"HHUSTR_E4M5", "MUS_E1M5", 615},
+	{"HHUSTR_E4M6", "MUS_E1M1", 616},
+	{"HHUSTR_E4M7", "MUS_E1M7", 617},
+	{"HHUSTR_E4M8", "MUS_E1M8", 618},
 	{"HHUSTR_E4M9", "MUS_E1M9", 0},
 
-	{"HHUSTR_E5M1", "MUS_E2M1", 0}, //36-44
-	{"HHUSTR_E5M2", "MUS_E2M2", 0},
-	{"HHUSTR_E5M3", "MUS_E2M3", 0},
-	{"HHUSTR_E5M4", "MUS_E2M4", 0},
-	{"HHUSTR_E5M5", "MUS_E1M4", 0},
-	{"HHUSTR_E5M6", "MUS_E2M6", 0},
-	{"HHUSTR_E5M7", "MUS_E2M7", 0},
-	{"HHUSTR_E5M8", "MUS_E2M8", 0},
+	{"HHUSTR_E5M1", "MUS_E2M1", 611}, //36-44
+	{"HHUSTR_E5M2", "MUS_E2M2", 612},
+	{"HHUSTR_E5M3", "MUS_E2M3", 613},
+	{"HHUSTR_E5M4", "MUS_E2M4", 614},
+	{"HHUSTR_E5M5", "MUS_E1M4", 615},
+	{"HHUSTR_E5M6", "MUS_E2M6", 616},
+	{"HHUSTR_E5M7", "MUS_E2M7", 617},
+	{"HHUSTR_E5M8", "MUS_E2M8", 618},
 	{"HHUSTR_E5M9", "MUS_E2M9", 0},
 
 	{"Raven's Lair", "MUS_E3M2", 0}, // 45-47
@@ -201,7 +202,7 @@ script 4 OPEN
 		SetCameraToTexture(9004, "Camera4", 90);
 		Spawn(Camera, -6144.0, 1184.0, 57.0 , 9005, 128); // Catacombs
 		SetCameraToTexture(9005, "Camera5", 90);
-		Spawn(Camera, 448.0, 9600.0, 25.0 , 9006, 160); // Labyrinth
+		Spawn(Camera, 360.0, 9560.0, 49.0 , 9006, 160); // Labyrinth
 		SetCameraToTexture(9006, "Camera6", 90);
 		Spawn(Camera, 5376.0, -128.0, 345.0 , 9007, 192); // Great Hall
 		SetCameraToTexture(9007, "Camera7", 90);
@@ -217,7 +218,7 @@ script 5 ENTER
 	// Starts the player in the docks in single player.
 	if(GameType() == GAME_SINGLE_PLAYER)
 	{
-		Teleport_NoFog(0,0,664,0);
+		Teleport_NoFog(0,0,611,0);
 	}
 	// Then give player a id tag.
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
@@ -257,7 +258,7 @@ script 8 (Void) // Script set dedicated to boss areas. (Tiggered by mapinfo.txt)
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2)
 	{
 	SectorDamage(94, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
-	SectorDamage(95, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
+	SectorDamage(618, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(96, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(97, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(98, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
@@ -271,7 +272,7 @@ script 8 (Void) // Script set dedicated to boss areas. (Tiggered by mapinfo.txt)
 	Floor_LowerToLowest(666, 8);
 	Delay(35);	// If respawn is on this prevent monsters to keep diening.
 	SectorDamage(94, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
-	SectorDamage(95, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
+	SectorDamage(618, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(96, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(97, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(98, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);

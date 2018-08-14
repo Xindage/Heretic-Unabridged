@@ -6,7 +6,7 @@ Version - 1
 + Original Heretic Unabridged by Beeb28.
 
 ------------
-Version - 2 / Dev
+Version - 2
 ------------
 + New Sector info for Episode 1 and 2. (Xindage)
 + New Chaos room.
@@ -21,3 +21,5 @@ Version - 2 / Dev
 + Final doors open slight faster. (Xindage)
 + Using chaos device right after opening the final door still let you reach the final map. (Xindage)
 + Killing all Minotaurs in The Portals of Chaos make all monsters in this area dies with it. (Xindage)
++ Spectators can now warp into the maps whitout needing to use noclip. (Xindage)
++ Fixed a odd warp glitch when custom doom mod is used. (Xindage)

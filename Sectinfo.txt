@@ -4,7 +4,7 @@
 
 [E1M1]
 names = {
-"\cuChaos Device" = {2428-2494},
+"\cuChaos Device" = {2428-2502},
 "\cuSwitching Area" = {2329-2424},
 "\cdThe Docks" = {0-156},
 "\cdThe Dungeons" = {157-403},
@@ -20,7 +20,7 @@ names = {
 
 [E2M1]
 names = {
-"\cuChaos Device" = {1714-1780},
+"\cuChaos Device" = {1714-1788},
 "\cuSwitching Area" = {1627-1713},
 "\cdThe Crater" = {0-54},
 "\cdThe Lava Pits" = {55-221},
