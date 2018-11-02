@@ -23,3 +23,7 @@ Version - 2
 + Killing all Minotaurs in The Portals of Chaos make all monsters in this area dies with it. (Xindage)
 + Spectators can now warp into the maps whitout needing to use noclip. (Xindage)
 + Fixed a odd warp glitch when custom doom mod is used. (Xindage)
+
+------------
+Version - 3 * Dev
+------------

@@ -11,6 +11,12 @@ episode e2m1
 	key = "h"
 }
 
+episode e3m1
+{
+	name = "$MNU_DOME"
+	key = "d"
+}
+
 map E1M1 lookup "MNU_COTD"
 {
 	next = "EndGame1"
@@ -34,6 +40,18 @@ map E2M1 lookup "MNU_HELLSMAW"
 	music = "MUS_E2M1"
 }
 
+map E3M1 lookup "MNU_DOME"
+{
+	next = "EndGameW"
+	sky1 = "SKY3"
+	translator = "maplines"
+	cluster = 3
+	infiniteflightpowerup
+	specialaction_lowerfloortohighest
+	specialaction_killmonsters
+	music = "MUS_E1M1"
+}
+
 cluster 1
 {
 	hub
@@ -48,4 +66,13 @@ cluster 2
 	flat = "FLATHUH1"
 	music = "MUS_CPTD"
 	exittext = lookup, "HE2TEXT"
+}
+
+
+cluster 3
+{
+	hub
+	flat = "FLTWAWA2"
+	music = "MUS_CPTD"
+	exittext = lookup, "HE3TEXT"
 }

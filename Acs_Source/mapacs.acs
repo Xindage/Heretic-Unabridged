@@ -92,6 +92,10 @@ script 2 (int deactivateMarker)
 	// Display a message based on how many switches are left
 	switch(SwitchesRemain)
 	{
+		Case 7:
+		PrintBold(l:"HEREUNAB_SWITCH7");
+		Break;
+		
 		Case 6:
 		PrintBold(l:"HEREUNAB_SWITCH6");
 		Break;
@@ -167,6 +171,7 @@ script 3 (int action)
 script 4 OPEN
 {
 	// Sets the cameras coordinates and the number of switches that need to be pulled based on the episode.
+	// Note for future editions, player sight height is 41 units plus floor height.
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1)
 	{
 		SwitchesRemain = 5;
@@ -211,11 +216,33 @@ script 4 OPEN
 		Delay(35);
 		Floor_LowerToLowest(601, 8);
 	}
+	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 3)
+	{
+		SwitchesRemain = 7;
+		Spawn(Camera, 2496.0, 640.0, 105.0 , 9001, 0); // Storehouse
+		SetCameraToTexture(9001, "Camera1", 90);
+		Spawn(Camera, 6016.0, -3440.0, 161.0 , 9002, 64); // Cesspool
+		SetCameraToTexture(9002, "Camera2", 90);
+		Spawn(Camera, 4416.0, 1808.0, 297.0 , 9003, 64); // Confluence
+		SetCameraToTexture(9003, "Camera3", 90);
+		Spawn(Camera, 8576.0, -64.0, 417.0 , 9004, 64); // Azure Fortress
+		SetCameraToTexture(9004, "Camera4", 90);
+		Spawn(Camera, -6144.0, 1184.0, 57.0 , 9005, 128); // Ophidian Lair
+		SetCameraToTexture(9005, "Camera5", 90);
+		Spawn(Camera, 4320.0, 8616.0, 65.0 , 9006, 0); // Halls of Fear
+		SetCameraToTexture(9006, "Camera6", 90);
+		Spawn(Camera, 9952.0, 9152.0, -79.0 , 9007, 128); // Chasm
+		SetCameraToTexture(9007, "Camera7", 90);
+		Spawn(Camera, 15136.0, 7328.0, 177.0 , 9008, 64); // D'Sparil's Keep
+		SetCameraToTexture(9008, "Camera8", 90);
+		Delay(35);
+		Floor_LowerToLowest(601, 8);
+	}
 }
 
 script 5 ENTER
 {
-	// Starts the player in the docks in single player.
+	// Starts the player in the starting map point in single player.
 	if(GameType() == GAME_SINGLE_PLAYER)
 	{
 		Teleport_NoFog(0,0,611,0);

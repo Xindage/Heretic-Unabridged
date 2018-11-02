@@ -82,6 +82,20 @@ ACTOR ObjectiveMarker6 : MapMarker 1006
 	}
 }
 
+ACTOR ObjectiveMarker7 : MapMarker 1007
+{
+	+NOTDMATCH
+	States
+	{
+	Spawn:
+		MARK A 0
+		MARK A 0 Thing_ChangeTID(0,7)
+	Idle:
+		MARK AB 8
+		Loop
+	}
+}
+
 ACTOR MaceSpawner2 : MaceSpawner 3001 {}
 ACTOR MaceSpawner3 : MaceSpawner 3002 {}
 ACTOR MaceSpawner4 : MaceSpawner 3003 {}

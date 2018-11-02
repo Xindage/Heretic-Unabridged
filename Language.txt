@@ -1,5 +1,6 @@
 [en default]
 
+HEREUNAB_SWITCH7 = "only six more to go.";
 HEREUNAB_SWITCH6 = "only five more to go.";
 HEREUNAB_SWITCH5 = "only four more to go.";
 HEREUNAB_SWITCH4 = "only three more to go.";
