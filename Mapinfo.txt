@@ -47,7 +47,7 @@ map E3M1 lookup "MNU_DOME"
 	translator = "maplines"
 	cluster = 3
 	infiniteflightpowerup
-	specialaction_lowerfloortohighest
+	SpecialAction = "Sorcerer2", "Floor_LowerToLowest", 666, 8
 	music = "MUS_E1M1"
 }
 

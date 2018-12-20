@@ -104,3 +104,24 @@ ACTOR MaceSpawner6 : MaceSpawner 3005 {}
 ACTOR MaceSpawner7 : MaceSpawner 3006 {}
 ACTOR MaceSpawner8 : MaceSpawner 3007 {}
 ACTOR MaceSpawner9 : MaceSpawner 3008 {}
+
+ACTOR Sorcerer3 : Sorcerer2 replaces Sorcerer2
+{
+  States
+  {
+  Death:
+    SDTH A 8 // A_Sor2DthInit
+    SDTH B 8
+    SDTH C 8 A_PlaySound("dsparil/scream", CHAN_BODY, 1, FALSE, ATTN_NONE)
+    SDTH DEDEDEDEDEDEDE 7
+//  SDTH F 7 A_Sor2DthLoop
+    SDTH G 6 A_PlaySound("dsparil/explode", CHAN_BODY, 1, FALSE, ATTN_NONE)
+    SDTH H 6
+    SDTH I 18
+    SDTH J 6 A_NoBlocking
+    SDTH K 6 A_PlaySound("dsparil/bones", CHAN_BODY, 1, FALSE, ATTN_NONE)
+    SDTH LMN 6
+    SDTH O -1 A_BossDeath
+    Stop
+   }
+}
