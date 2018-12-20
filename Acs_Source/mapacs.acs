@@ -35,7 +35,7 @@ int CurrentArea[48][3] =
 	{"HHUSTR_E2M8", "MUS_E2M8", 618},
 	{"HHUSTR_E2M9", "MUS_E2M9", 0},
 
-	{"HHUSTR_E3M1", "MUS_E1M1", 611}, //18-26
+	{"HHUSTR_E3M1", "MUS_E1M1", 619}, //18-26
 	{"HHUSTR_E3M2", "MUS_E3M2", 612},
 	{"HHUSTR_E3M3", "MUS_E3M3", 613},
 	{"HHUSTR_E3M4", "MUS_E1M6", 614},
@@ -129,7 +129,7 @@ script 2 (int deactivateMarker)
 
 script 3 (int action)
 {
-	// Check if the final door should be opened
+	// Action 0 - Check if the final door should be opened
 	if(action == 0 && LineSide() == 0 && SwitchesRemain <= 0 && FinalDoorOpen == FALSE)
 	{
 		FinalDoorOpen = TRUE;
@@ -149,6 +149,7 @@ script 3 (int action)
 			Thing_ChangeTID(2000 + PlayerNumber(), 1000 + PlayerNumber());
 		}
 	}
+	// Action 1 - Someone has collected the Wings.
 	if(Action == 1 && GotWings == FALSE)
 	{
 		GotWings = TRUE;
@@ -165,6 +166,19 @@ script 3 (int action)
 			// Return player's tag.
 			Thing_ChangeTID(2000 + PlayerNumber(), 1000 + PlayerNumber());
 		}
+	}
+	// Both Actions 2 - Display a tip based on where the secret transition is but not on deathmatch.
+	if(Action == 2 && GameType() != GAME_NET_DEATHMATCH)
+	{
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {Terminate;}
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {Terminate;}
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 3) {Door_Open(158,16); PrintBold(l:"HEREUNAB_SECRET3");}
+	}
+	if(Action == 2 && GameType() == GAME_NET_DEATHMATCH)
+	{
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {Terminate;}
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {Terminate;}
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 3) {Door_Open(158,16);}
 	}
 }
 
@@ -219,21 +233,21 @@ script 4 OPEN
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 3)
 	{
 		SwitchesRemain = 7;
-		Spawn(Camera, 2496.0, 640.0, 105.0 , 9001, 0); // Storehouse
+		Spawn(Camera, -2816.0, -2880.0, 105.0 , 9001, 0); // Storehouse
 		SetCameraToTexture(9001, "Camera1", 90);
-		Spawn(Camera, 6016.0, -3440.0, 161.0 , 9002, 64); // Cesspool
+		Spawn(Camera, 704.0, -6960.0, 225.0 , 9002, 64); // Cesspool
 		SetCameraToTexture(9002, "Camera2", 90);
-		Spawn(Camera, 4416.0, 1808.0, 297.0 , 9003, 64); // Confluence
+		Spawn(Camera, -912.0, -1632.0, 297.0 , 9003, 64); // Confluence
 		SetCameraToTexture(9003, "Camera3", 90);
-		Spawn(Camera, 8576.0, -64.0, 417.0 , 9004, 64); // Azure Fortress
+		Spawn(Camera, 2976.0, -192.0, 33.0 , 9004, 192); // Azure Fortress
 		SetCameraToTexture(9004, "Camera4", 90);
-		Spawn(Camera, -6144.0, 1184.0, 57.0 , 9005, 128); // Ophidian Lair
+		Spawn(Camera, 1376.0, 3840.0, 65.0 , 9005, 64); // Ophidian Lair
 		SetCameraToTexture(9005, "Camera5", 90);
-		Spawn(Camera, 4320.0, 8616.0, 65.0 , 9006, 0); // Halls of Fear
+		Spawn(Camera, -992.0, 5096.0, 89.0 , 9006, 64); // Halls of Fear
 		SetCameraToTexture(9006, "Camera6", 90);
-		Spawn(Camera, 9952.0, 9152.0, -79.0 , 9007, 128); // Chasm
+		Spawn(Camera, 5984.0, 3664.0, -143.0 , 9007, 32); // Chasm
 		SetCameraToTexture(9007, "Camera7", 90);
-		Spawn(Camera, 15136.0, 7328.0, 177.0 , 9008, 64); // D'Sparil's Keep
+		Spawn(Camera, 9504.0, 4384.0, 177.0 , 9008, 64); // D'Sparil's Keep
 		SetCameraToTexture(9008, "Camera8", 90);
 		Delay(35);
 		Floor_LowerToLowest(601, 8);
@@ -297,7 +311,7 @@ script 8 (Void) // Script set dedicated to boss areas. (Tiggered by mapinfo.txt)
 	SectorDamage(104, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(667, 9000, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	Floor_LowerToLowest(666, 8);
-	Delay(35);	// If respawn is on this prevent monsters to keep diening.
+	Delay(1);	// If respawn is on this prevent monsters to keep diening.
 	SectorDamage(94, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(618, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(96, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);

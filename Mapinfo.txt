@@ -48,7 +48,6 @@ map E3M1 lookup "MNU_DOME"
 	cluster = 3
 	infiniteflightpowerup
 	specialaction_lowerfloortohighest
-	specialaction_killmonsters
 	music = "MUS_E1M1"
 }
 

@@ -104,5 +104,3 @@ ACTOR MaceSpawner6 : MaceSpawner 3005 {}
 ACTOR MaceSpawner7 : MaceSpawner 3006 {}
 ACTOR MaceSpawner8 : MaceSpawner 3007 {}
 ACTOR MaceSpawner9 : MaceSpawner 3008 {}
-
-ACTOR NoChaos : inventory {}

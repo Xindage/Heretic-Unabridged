@@ -9,3 +9,6 @@ HEREUNAB_SWITCH2 = "only one more to go.";
 HEREUNAB_SWITCH1 = "the final area is unlocked.";
 CHAOSGIVING = "chaos device was granted!";
 WINGSGIVING = "wings of wrath is avaliable!";
+HEREUNAB_SECRET1 = "The secret tunnel was revealed in the Cathedral.";
+HEREUNAB_SECRET2 = "The secret passage was exposed in the Ice Grotto.";
+HEREUNAB_SECRET3 = "The hidden bars were raised in the Confluence.";
