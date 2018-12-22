@@ -237,7 +237,7 @@ script 4 OPEN
 		SwitchesRemain = 7;
 		Spawn(Camera, -2816.0, -2880.0, 105.0 , 9001, 0); // Storehouse
 		SetCameraToTexture(9001, "Camera1", 90);
-		Spawn(Camera, 704.0, -6960.0, 225.0 , 9002, 64); // Cesspool
+		Spawn(Camera, 704.0, -6960.0, 161.0 , 9002, 64); // Cesspool
 		SetCameraToTexture(9002, "Camera2", 90);
 		Spawn(Camera, -912.0, -1632.0, 297.0 , 9003, 64); // Confluence
 		SetCameraToTexture(9003, "Camera3", 90);
@@ -247,7 +247,7 @@ script 4 OPEN
 		SetCameraToTexture(9005, "Camera5", 90);
 		Spawn(Camera, -992.0, 5096.0, 89.0 , 9006, 64); // Halls of Fear
 		SetCameraToTexture(9006, "Camera6", 90);
-		Spawn(Camera, 5984.0, 3664.0, -143.0 , 9007, 32); // Chasm
+		Spawn(Camera, 5992.0, 3672.0, -143.0 , 9007, 64); // Chasm
 		SetCameraToTexture(9007, "Camera7", 90);
 		Spawn(Camera, 9504.0, 4384.0, 177.0 , 9008, 64); // D'Sparil's Keep
 		SetCameraToTexture(9008, "Camera8", 90);
@@ -327,4 +327,17 @@ script 8 (Void) // Script set dedicated to boss areas. (Tiggered by mapinfo.txt)
 	SectorDamage(104, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	SectorDamage(667, 0, 1000, "", DAMAGE_NONPLAYERS | DAMAGE_IN_AIR);
 	}
+}
+
+script 9 (Void) // Debug script
+{
+	SwitchesRemain = 0;
+	Acs_Execute(3, 0, 0);
+	Floor_LowerToLowest(602, 8);
+	Floor_LowerToLowest(603, 8);
+	Floor_LowerToLowest(604, 8);
+	Floor_LowerToLowest(605, 8);
+	Floor_LowerToLowest(606, 8);
+	Floor_LowerToLowest(607, 8);
+	Floor_LowerToLowest(608, 8);
 }
