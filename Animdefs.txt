@@ -6,3 +6,5 @@ cameratexture CAMERA5 256 160 fit 256 160
 cameratexture CAMERA6 256 160 fit 256 160
 cameratexture CAMERA7 256 160 fit 256 160
 cameratexture CAMERA8 256 160 fit 256 160
+
+switch heretic SW3OFF on pic SW3ON tics 0

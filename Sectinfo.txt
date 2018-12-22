@@ -32,3 +32,18 @@ names = {
 "\cdThe Portals of Chaos" = {1329-1419},
 "\cdThe Glacier" = {1420-1626}
 }
+
+[E3M1]
+names = {
+"\cuChaos Device" = {1774-1848},
+"\cuSwitching Area" = {0-99},
+"\cdThe Storehouse" = {100-252},
+"\cdThe Cesspool" = {253-414},
+"\cdThe Confluence" = {415-641},
+"\cdThe Azure Fortress" = {642-881},
+"\cdThe Halls of Fear" = {882-1108},
+"\cdThe Ophidian Lair" = {1109-1303},
+"\cdThe Chasm" = {1304-1519},
+"\cdD'Sparil's Keep" = {1710-1773},
+"\cdThe Aquifer" = {1709-1520}
+}

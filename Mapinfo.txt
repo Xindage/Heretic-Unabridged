@@ -53,7 +53,9 @@ map E3M1 lookup "MNU_DOME"
 
 cluster 1
 {
-	hub
+	ResetHealth
+	ResetInventory
+	ResetItems
 	flat = "FLOOR25"
 	music = "MUS_CPTD"
 	exittext = lookup, "HE1TEXT"
@@ -61,7 +63,9 @@ cluster 1
 
 cluster 2
 {
-	hub
+	ResetHealth
+	ResetInventory
+	ResetItems
 	flat = "FLATHUH1"
 	music = "MUS_CPTD"
 	exittext = lookup, "HE2TEXT"
@@ -70,7 +74,9 @@ cluster 2
 
 cluster 3
 {
-	hub
+	ResetHealth
+	ResetInventory
+	ResetItems
 	flat = "FLTWAWA2"
 	music = "MUS_CPTD"
 	exittext = lookup, "HE3TEXT"
