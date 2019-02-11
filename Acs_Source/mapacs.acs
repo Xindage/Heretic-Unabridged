@@ -10,6 +10,16 @@ bool GotBlue = FALSE;
 bool GotWings = FALSE;
 str Camera = "SecurityCamera";
 
+// Visited areas, this prevent for chaos hub action wont repeat whitout need.
+// Map 1 and 9 Booleans is not needed
+Bool VMap2 = FALSE;
+Bool VMap3 = FALSE;
+Bool VMap4 = FALSE;
+Bool VMap5 = FALSE;
+Bool VMap6 = FALSE;
+Bool VMap7 = FALSE;
+Bool VMap8 = FALSE;
+Bool VMAll = FALSE;
 
 // This array contains map names, music, TIDs for warp points and references tags for mapping.
 // Tag 619 is used when the starting point is different than the warp in ExM1.
@@ -70,17 +80,60 @@ int CurrentArea[48][3] =
 	{"American's Legacy", "MUS_E1M6", 0}
 };
 
-script 1 (int which, int warppoint)
+// Script data start.
+script 1 (int which, int warppoint)	// For when the player crosses in to a new map.
 {
-	// For when the player crosses in to a new map, don't let the script run if:
-	// Line is not not activated on front and player is a bot.
-	if(LineSide() == 0 && !PlayerIsBot(PlayerNumber()))
+	// Line is not activated on back side.
+	if(LineSide() == 0)
 	{
-		// Set the music and map name
-		SetFont("BIGFONT");
-		HudMessage(l:CurrentArea[which][0]; HUDMSG_FADEINOUT, 1, CR_GREEN, 0.5, 0.0, 5.0);
-		LocalSetMusic(CurrentArea[which][1],0);
-		if(warppoint == 1) {Teleport(0,CurrentArea[which][2],0);} // Optionally teleport
+		// Teleport when activated from chaos room.
+		if(warppoint == 1) {Teleport(0,CurrentArea[which][2],0);}
+		// Open the chaos room of the visted map just once.
+		if(VMAll == FALSE)
+		{
+			if(CurrentArea[which][2] == 612 && VMap2 == FALSE)
+			{
+				VMap2 = TRUE;
+				Floor_LowerToLowest(CurrentArea[which][2]-10, 8);
+			}
+			if(CurrentArea[which][2] == 613 && VMap3 == FALSE)
+			{
+				VMap3 = TRUE;
+				Floor_LowerToLowest(CurrentArea[which][2]-10, 8);
+			}
+			if(CurrentArea[which][2] == 614 && VMap4 == FALSE)
+			{
+				VMap4 = TRUE;
+				Floor_LowerToLowest(CurrentArea[which][2]-10, 8);
+			}
+			if(CurrentArea[which][2] == 615 && VMap5 == FALSE)
+			{
+				VMap5 = TRUE;
+				Floor_LowerToLowest(CurrentArea[which][2]-10, 8);
+			}
+			if(CurrentArea[which][2] == 616 && VMap6 == FALSE)
+			{
+				VMap6 = TRUE;
+				Floor_LowerToLowest(CurrentArea[which][2]-10, 8);
+			}
+			if(CurrentArea[which][2] == 617 && VMap7 == FALSE)
+			{
+				VMap7 = TRUE;
+				Floor_LowerToLowest(CurrentArea[which][2]-10, 8);
+			}
+			if(CurrentArea[which][2] == 618 && VMap8 == FALSE)
+			{
+				VMap8 = TRUE;
+				Floor_LowerToLowest(CurrentArea[which][2]-10, 8);
+			}
+		}
+		// Set the music and map name if player is not a bot.
+		if(!PlayerIsBot(PlayerNumber()))
+		{
+			SetFont("BIGFONT");
+			HudMessage(l:CurrentArea[which][0]; HUDMSG_FADEINOUT, 1, CR_GREEN, 0.5, 0.0, 5.0);
+			LocalSetMusic(CurrentArea[which][1],0);
+		}
 	}
 }
 
@@ -135,7 +188,6 @@ script 3 (int action)
 		FinalDoorOpen = TRUE;
 		Door_Open(665,8); // Open the final door
 		Floor_LowerToLowest(608, 8);
-		AutoSave();
 		if(GameType() == GAME_NET_COOPERATIVE) // If it's a multiplayer game deliver chaos devices to the others players.
 		{
 			// Kill players's tag for now
@@ -273,7 +325,7 @@ script 6 RESPAWN
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
 }
 
-script 7 OPEN // Script sets that is used when game start.
+script 7 OPEN // Loop script sets that is used when game start.
 {
 	if(GameType() == GAME_SINGLE_PLAYER)
 		{	
@@ -281,8 +333,10 @@ script 7 OPEN // Script sets that is used when game start.
 		if(ThingCountName("KeyYellow",0) == 0 && GotYellow == FALSE) {GotYellow = TRUE; AutoSave();}
 		if(ThingCountName("KeyGreen",0) == 0 && GotGreen == FALSE) {GotGreen = TRUE; AutoSave();}
 		if(ThingCountName("KeyBlue",0) == 0 && GotBlue == FALSE) {GotBlue = TRUE; AutoSave();}
+		if(VMap2 == TRUE && VMap3 == TRUE && VMap4 == TRUE && VMap5 == TRUE && VMap6 == TRUE && VMap7 == TRUE && VMap8 == TRUE)
+		{VMAll = TRUE; AutoSave();}
 		// Terminate script when all objectives is met.
-		if(GotYellow == TRUE && GotGreen == TRUE && GotBlue == TRUE) {Terminate;}
+		if(GotYellow == TRUE && GotGreen == TRUE && GotBlue == TRUE && VMAll == TRUE) {Terminate;}
 		Delay(1);
 		Restart;
 		}
@@ -369,6 +423,7 @@ script 8 (Void) // Script set dedicated to boss areas. (Tiggered by mapinfo.txt)
 script 9 (Void) // Debug script
 {
 	SwitchesRemain = 0;
+	VMAll = True;
 	Acs_Execute(3, 0, 0);
 	Floor_LowerToLowest(602, 8);
 	Floor_LowerToLowest(603, 8);
