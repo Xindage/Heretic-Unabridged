@@ -39,3 +39,45 @@ Texture "SW3ON", 64, 128
 	Patch "WALL63", 48, 96
 	Patch "SW3ON", 20, 53
 }
+
+Texture "SW4OFF", 64, 128
+{
+	Patch "WALL63", 16, 32
+	Patch "WALL63", 32, 32
+	Patch "WALL63", 0, 0
+	Patch "WALL63", 16, 0
+	Patch "WALL63", 32, 0
+	Patch "WALL63", 48, 0
+	Patch "WALL63", 48, 32
+	Patch "WALL63", 0, 32
+	Patch "WALL63", 0, 64
+	Patch "WALL63", 16, 64
+	Patch "WALL63", 48, 96
+	Patch "WALL63", 48, 64
+	Patch "WALL63", 0, 96
+	Patch "WALL63", 32, 96
+	Patch "WALL63", 16, 96
+	Patch "WALL63", 32, 64
+	Patch "SW4OFF", 20, 53
+}
+
+Texture "SW4ON", 64, 128
+{
+	Patch "WALL63", 0, 0
+	Patch "WALL63", 16, 0
+	Patch "WALL63", 0, 32
+	Patch "WALL63", 32, 32
+	Patch "WALL63", 32, 64
+	Patch "WALL63", 16, 64
+	Patch "WALL63", 16, 32
+	Patch "WALL63", 32, 0
+	Patch "WALL63", 48, 0
+	Patch "WALL63", 48, 32
+	Patch "WALL63", 0, 64
+	Patch "WALL63", 48, 64
+	Patch "WALL63", 0, 96
+	Patch "WALL63", 16, 96
+	Patch "WALL63", 32, 96
+	Patch "WALL63", 48, 96
+	Patch "SW4ON", 20, 53
+}

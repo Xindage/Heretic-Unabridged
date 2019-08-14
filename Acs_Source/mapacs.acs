@@ -222,7 +222,7 @@ script 3 (int action)
 	// Both Actions 2 - Display a tip based on where the secret transition is but not on deathmatch.
 	if(Action == 2 && GameType() != GAME_NET_DEATHMATCH)
 	{
-		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {Terminate;}
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {Door_Open(150,16); PrintBold(l:"HEREUNAB_SECRET1");}
 		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {Terminate;}
 		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 3) {Door_Open(158,16); PrintBold(l:"HEREUNAB_SECRET3");}
 		AmbientSound("misc/puzzle",128);
@@ -230,7 +230,7 @@ script 3 (int action)
 	}
 	if(Action == 2 && GameType() == GAME_NET_DEATHMATCH)
 	{
-		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {Terminate;}
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {Door_Open(150,16);}
 		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {Terminate;}
 		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 3) {Door_Open(158,16);}
 	}
@@ -239,7 +239,7 @@ script 3 (int action)
 script 4 OPEN
 {
 	// Sets the cameras coordinates and the number of switches that need to be pulled based on the episode.
-	// Note for future editions, player sight height is 41 units plus floor height.
+	// Note for future changes, player sight height is 41 units plus floor height.
 	if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1)
 	{
 		SwitchesRemain = 5;

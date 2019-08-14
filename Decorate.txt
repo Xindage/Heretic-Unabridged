@@ -127,7 +127,7 @@ ACTOR Sorcerer3 : Sorcerer2 replaces Sorcerer2
 }
 
 // Artifly seens to dont stay forever on multiplayer zandronum, that's a fix.
-ACTOR PermaArtiFly : ArtiFly
+ACTOR PermaArtiFly : ArtiFly replaces ArtiFly
 {
 	Powerup.Duration 0x7FFFFFFF
 }
