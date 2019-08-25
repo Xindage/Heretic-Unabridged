@@ -223,7 +223,7 @@ script 3 (int action)
 	if(Action == 2 && GameType() != GAME_NET_DEATHMATCH)
 	{
 		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 1) {Door_Open(150,16); PrintBold(l:"HEREUNAB_SECRET1");}
-		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {Terminate;}
+		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 2) {Door_Open(150,16); PrintBold(l:"HEREUNAB_SECRET2");} //Not used yet.
 		if(GetLevelInfo(LEVELINFO_CLUSTERNUM) == 3) {Door_Open(158,16); PrintBold(l:"HEREUNAB_SECRET3");}
 		AmbientSound("misc/puzzle",128);
 		AutoSave();
